@@ -1,3 +1,4 @@
+import midWare from "./middleware" ;
 // dependancy for express
 const express = require('express');
 const path = require('path');
@@ -11,7 +12,7 @@ const { midWare } = require('./middleware/midWare');
 const PORT = 3001;
 // using express as a function
 const applet = express();
-app.use(midware);
+app.use(midWare);
 
 const middleware = (req, res, next) => {
     // ANSI escape code that instructs the terminal to print in yellow
