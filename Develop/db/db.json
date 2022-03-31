@@ -1,6 +1,9 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title":"Note Taker",
+        "text":"Enter Notes Here",
+        "dependancies": {
+            "express": "^4.17.1"
+        }
     }
 ]
