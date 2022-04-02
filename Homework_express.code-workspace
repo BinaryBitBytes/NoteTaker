@@ -6,5 +6,8 @@
 		{
 			"path": "Develop"
 		}
-	]
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }

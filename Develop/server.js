@@ -11,7 +11,7 @@ const { midWare } = require('./middleware/midWare');
 //communication port 3001 for local host
 const PORT = 3001;
 // using express as a function
-const applet = express();
+const app = express();
 app.use(midWare);
 
 const middleware = (req, res, next) => {
@@ -35,7 +35,7 @@ app.listen(PORT, () =>
 //Building out the Middleware for our JSON and data
 app.use(express.json()); //using express and parsing the contents into a JSON object
 //app.use(express.urlencoded({ extended: true}));
-app.use('api', applet);
+app.use('api', app);
 console.log(``);
 app.use(express.static('public')); //creating a static rout for the public folder
 
