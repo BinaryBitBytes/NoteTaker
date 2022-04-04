@@ -13,4 +13,5 @@ const midWare = (req,res,next) =>{
     }  
     next();
 };
+
 exports.midWare = midWare;

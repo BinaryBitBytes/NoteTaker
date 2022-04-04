@@ -1,10 +1,12 @@
+const task = require('express').Router();
 const { readIt } = require('../helpers/fsUtil');
+const { v4: uuidv4 } = require('uuid');
+
 //! REMEBER CRUD OPERATION
 //! CREATE
 //! READ
 //! UPDATE
 //! DELETE
-const task = require('express').Router();
 
 const {
     readIt,
@@ -47,7 +49,19 @@ task.delete('/:task_id', (req, res) => {
 // Post route for the new task
 task.post('/', (req,res) => {
     console.log(req.body);
-    const
-})
+    const {noteTitle, noteText} = req.body;
+    
+    if(req.body) {
+        const newTask = {
+        noteTitle,
+        noteText,
+        task_id: uuidv4(),
+    };
+    readItUpdateIt(newTask, './db/db.json');
+    res.json('The task is now added to the list.');
+    } else {
+        res.error('an error occured while adding the task.');
+    }
+});
 
-exports.taskData = taskData; 
+module.exports = task; 
