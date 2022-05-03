@@ -5,5 +5,14 @@
         "dependancies": {
             "express": "^4.17.1"
         }
+    },
+    {
+        "text":"Enter Notes Here",
+        "title":"Note Taker",
+        "dependancies":{ 
+            "express":"^4.17.1" 
+        }
+
     }
+
 ]

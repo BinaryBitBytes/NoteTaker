@@ -1,4 +1,4 @@
-const midWare = (req,res,next) =>{
+const midWare = (req, res, next) =>{
     switch (req.method) {
         case 'GET': {
             console.info(`${req.method}request to ${req.path}`);
