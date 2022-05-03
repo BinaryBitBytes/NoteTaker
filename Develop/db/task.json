@@ -1,7 +1,7 @@
 [
     {
-        "noteTitle": "Note 1",
-        "noteText": "This is a note",
-        "note_id": "001"
+        "taskTitle": "Note 1",
+        "taskText": "This is a note",
+        "task_id": "001"
     }
 ]

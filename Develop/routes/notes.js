@@ -1,63 +1,63 @@
-const task = require("express").Router();
+const notes = require("express").Router();
 const { v4: uuidv4 } = require("uuid");
 const { readIt, readItUpdateIt, writeIt } = require("../helpers/fsUtil");
 const PORT = 3001;
-const { noteData } = require("./scripts/notes.js");
+const { notesData } = require("./scripts/notes.js");
 //getting the route for sending a response
-task.get("/", (req, res) => {
-  readIt("./db/task.json").then((data) => res.json(JSON.parse(data)));
+notes.get("/", (req, res) => {
+  readIt("./db/note.json").then((data) => res.json(JSON.parse(data)));
 });
 // fb.get('/', (req, res) => {
 //     res.send('http://localhost:3001/api');
 //   });
-task.get("/:task_id", (req, res) => {
-  const taskId = req.params.task_id;
-  readIt("./db/task.json")
+notes.get("/:notes_id", (req, res) => {
+  const noteId = req.params.notes_id;
+  readIt("./db/note.json")
     .then((data) => JSON.parse(data))
     .then((json) => {
-      const result = json.filter((task) => task.task_id === taskId);
+      const result = json.filter((note) => note.note_id === noteId);
       return result.length > 0
         ? res.json(result)
         : res.json("No task with that ID");
     });
 });
 
-task.delete("/:task_id", (req, res) => {
-  const taskId = req.params.task_id;
-  readIt("./db/task.json")
+notes.delete("/:notes_id", (req, res) => {
+  const noteId = req.params.notes_id;
+  readIt("./db/notes.json")
     .then((data) => JSON.parse(data))
     .then((json) => {
-      const result = json.filter((task) => task.task_id !== taskId);
+      const result = json.filter((note) => note.note_id !== noteId);
 
       // Save that array to the filesystem
-      writeIt("./db/task.json", result);
+      writeIt("./db/notes.json", result);
 
       // Respond to the DELETE request
-      res.json(`Item ${taskId} has been deleted 🗑️`);
+      res.json(`Item ${notesId} has been deleted 🗑️`);
     });
 });
 
-task.post("/", (req, res) => {
+notes.post("/", (req, res) => {
   console.log(req.body);
 
   const { username, note, task } = req.body;
 
   if (req.body) {
-    const newTask = {
+    const newNote = {
       username,
       note,
       task,
       task_id: uuidv4(),
     };
 
-    readItUpdateIt(newTask, "./db/task.json");
+    readItUpdateIt(newNote, "./db/notes.json");
     res.json(`task added successfully 🚀`);
   } else {
     res.error("Error in adding task");
   }
 });
 
-module.exports = task;
+module.exports = notes;
 
 // fb.listen(PORT, () =>
 //     console.log(`listening locally at http://localhost:${PORT}`)

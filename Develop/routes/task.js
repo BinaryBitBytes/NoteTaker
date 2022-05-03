@@ -12,7 +12,7 @@ const {
     readIt,
     writeIt,
     readItUpdateIt
-} = require('../helpers/fsUtil.js');
+} = require('../helpers/fsUtil');
 
 //GET Route for all tasks
 task.get('/', (req, res) => {
