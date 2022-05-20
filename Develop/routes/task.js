@@ -16,13 +16,13 @@ const {
 
 //GET Route for all tasks
 task.get('/', (req, res) => {
-    fs.readIt('./db/db.json').then((data) => res.json(JSON.parse(data)));
+    fs.readIt('./db/task.json').then((data) => res.json(JSON.parse(data)));
 });
 
 // GET Route for a specific task
 task.get('/:task_id', (req,res) => {
     const taskId = req.params.task_id;
-    readIt('./db/db.json')
+    readIt('./db/task.json')
         .then((data) => JSON.parse(data))
         .then((json) => {
             const result = json.filter((task) => task.task_id === taskId);
@@ -49,15 +49,15 @@ task.delete('/:task_id', (req, res) => {
 // Post route for the new task
 task.post('/', (req,res) => {
     console.log(req.body);
-    const {noteTitle, noteText} = req.body;
+    const {taskTitle, taskText} = req.body;
     
     if(req.body) {
         const newTask = {
-        noteTitle,
-        noteText,
+        taskTitle,
+        taskText,
         task_id: uuidv4(),
     };
-    readItUpdateIt(newTask, './db/db.json');
+    readItUpdateIt(newTask, './db/task.json');
     res.json('The task is now added to the list.');
     } else {
         res.error('an error occured while adding the task.');

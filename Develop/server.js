@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(midWare);
+console.log(app.use(midWare));
 
 app.use(express.json()); //using express and parsing the contents into a JSON object
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +19,6 @@ app.use('/api', api);
 app.use(express.static('public')); //creating a static rout for the public folder
 
 //app.use('routes', route);
-console.log(``);
 
 app.get('/', (req, res) => 
   res.sendFile(path.join(__dirname, '/public/index.html'))
