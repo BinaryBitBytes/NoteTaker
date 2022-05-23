@@ -3,20 +3,20 @@ const express = require('express');
 const path = require('path');
 const { midWare } = require('./middleware/midWare');
 // making a route that points to index.js
-const api = ('./routes/index.js');
+const api = ('/routes/index.js');
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001; // process.env.PORT || 
 
 const app = express();
-
 app.use(midWare);
-console.log(app.use(midWare));
+app.use(express.static('public')); //! express.static('public')//creating a static rout for the public folder
+
+//console.log(app.use(midWare));
 
 app.use(express.json()); //using express and parsing the contents into a JSON object
-app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+//app.use(express.urlencoded({ extended: true }));
+//app.use('/api', api);
 
-app.use(express.static('public')); //creating a static rout for the public folder
 
 //app.use('routes', route);
 
@@ -33,7 +33,7 @@ app.get('*', (req, res) =>
   );
 
 app.listen(PORT, () =>
-console.log(`Listening for requests on port ${PORT}! 🏎️`)
+console.log(`Listening for requests at http://localhost:${PORT} 🏎️`)
   );
   // app.post('/', (req, res) => res.json(`POST route`));
   // app.put('/:id', (req, res) => res.json(`PUT route`));
