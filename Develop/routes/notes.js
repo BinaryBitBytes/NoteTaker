@@ -7,9 +7,7 @@ const { notesData } = require("./scripts/notes.js");
 notes.get("/", (req, res) => {
   readIt("./db/note.json").then((data) => res.json(JSON.parse(data)));
 });
-// fb.get('/', (req, res) => {
-//     res.send('http://localhost:3001/api');
-//   });
+
 notes.get("/:notes_id", (req, res) => {
   const noteId = req.params.notes_id;
   readIt("./db/note.json")

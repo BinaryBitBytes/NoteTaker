@@ -14,8 +14,8 @@ app.use(express.static('public')); //! express.static('public')//creating a stat
 //console.log(app.use(midWare));
 
 app.use(express.json()); //using express and parsing the contents into a JSON object
-//app.use(express.urlencoded({ extended: true }));
-//app.use('/api', api);
+app.use(express.urlencoded({ extended: true }));
+// app.use('/api', api);
 
 
 //app.use('routes', route);
