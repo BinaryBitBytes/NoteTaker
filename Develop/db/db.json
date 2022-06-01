@@ -2,16 +2,13 @@
     {
         "title":"Note Taker",
         "text":"Enter Notes Here",
-        "dependancies": {
-            "express": "^4.17.1"
-        }
+        "id":"1"
     },
     {
         "text":"Enter Notes Here",
         "title":"Note Taker",
-        "dependancies":{ 
-            "express":"^4.17.1" 
-        }
+        "id":"2"
+        
 
     }
 

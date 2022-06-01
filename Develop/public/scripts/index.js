@@ -7,12 +7,10 @@ fbBtn.addEventListener('click', (e) => {
   });
 
 const createCard = (note)=> {
-    //creating a note card
     const theCard = document.createElement('div');
     theCard.classList.add('note-title','a1');
     theCard.setAttribute('key', note.note_id);
 
-    // making the header for the card
     const theCardHeader = document.createElement('H3');
     theCardHeader.classList.add(
         'note-title',
@@ -36,7 +34,6 @@ const getTasks = () =>
     headers: {
       'Content-Type': 'application/json',
     },
-    // body: JSON.stringify(data),
   })
     .then((response) => response.json())
     .then((data) => data)
@@ -66,26 +63,22 @@ getTasks().then((data) => data.forEach((task) => createCard(task)));
 const validateTask = (newTask) => {
     const { username, task, note } = newTask;
   
-    // Object to hold our error messages until we are ready to return
     const errorState = {
       username: '',
       task: '',
       note: '',
     };
   
-    // Bool value if the username is valid
     const userTest = username.length >= 4;
     if (!userTest) {
       errorState.username = 'Invalid username!';
     }
   
-    // Bool value to see if the tip being added is at least 15 characters long
     const taskCheck = tip.length > 15;
     if (!taskCheck) {
       errorState.task = 'Tip must be at least 15 characters';
     }
   
-    // Bool value to see if the topic is either UX or UI
     const noteCheck = topic.includes('UX' || 'UI');
     if (!noteCheck) {
       errorState.task = 'Topic not relevant to UX or UI';
@@ -96,7 +89,6 @@ const validateTask = (newTask) => {
       errors: errorState,
     };
   
-    // Return result object with a isValid boolean and an errors object for any errors that may exist
     return result;
   };
 
@@ -129,23 +121,18 @@ const submitDiagnostics = (submissionObj) => {
     e.preventDefault();
     console.log('Form submit invoked');
   
-    // Get the value of the tip and save it to a variable
     const taskContent = document.getElementById('taskText').value;
   
-    // get the value of the username and save it to a variable
     const taskUsername = document.getElementById('taskUsername').value.trim();
   
-    // Create an object with the tip and username
     const newTask = {
       username: taskUsername,
       topic: 'UX',
       task: taskContent,
     };
   
-    // Run the tip object through our validator function
     const submission = validateTask(newTask);
   
-    // If the submission is valid, post the tip. Otherwise, handle the errors.
     return submission.isValid ? postTasks(newTask) : submitDiagnostics(submission);
   };
 
