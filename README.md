@@ -23,6 +23,8 @@ Table of Contents:
 
 * [Questions](#questions)
 
+* [Demo](#demo)
+
 ### Installation
 -----------------
 
@@ -57,3 +59,10 @@ No testing
 -------------
 
 [Github Profile](https://github.com/BinaryBitBytes)  |  To reach me via Email 117mwc117@gmail.com
+
+### Demo
+
+-------------
+
+![Note Taker](https://user-images.githubusercontent.com/94703967/171455483-74e0e921-1758-4d8a-bb0b-73fe5760ee60.gif)
+
