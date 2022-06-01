@@ -5,7 +5,7 @@ const { midWare } = require('./middleware/midWare');
 // making a route that points to index.js
 const api = ('/routes/index.js');
 
-const PORT = 8080; // process.env.PORT || 
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(midWare);
